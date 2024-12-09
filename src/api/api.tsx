@@ -1,14 +1,10 @@
 import axios from "axios";
 import { BASE_URL } from "../config";
-import { handleApiError } from "@/utils/apiErrorHandler";
-import { useNavigate } from "react-router-dom";
 
 const api = axios.create({
   baseURL: BASE_URL,
   timeout: 30000,
 });
-
-const navigate = useNavigate();
 
 api.interceptors.request.use(
   (config) => {
@@ -45,7 +41,6 @@ api.interceptors.response.use(
           console.error("Refresh token xatosi:", refreshError);
           localStorage.removeItem("token");
           localStorage.removeItem("refreshToken");
-          handleApiError(refreshError, navigate);
         }
       }
     }
