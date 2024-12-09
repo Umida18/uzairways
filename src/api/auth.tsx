@@ -1,15 +1,12 @@
 import axios from "axios";
 import { BASE_URL } from "../config";
-import { handleApiError } from "@/utils/apiErrorHandler";
-import { useNavigate } from "react-router-dom";
 
 export const login = async (data: { username: string; password: string }) => {
-  const navigate = useNavigate();
   try {
     const response = await axios.post(`${BASE_URL}/auth/login`, data);
     console.log("Login response:", response);
 
-    const token = response.data?.token;
+    const token = response.data?.token; // Tokenni qaytarish yo'lini tekshiring
     const userId = response.data.userId;
     const userRole = response.data.userRole;
     if (token) {
@@ -23,7 +20,6 @@ export const login = async (data: { username: string; password: string }) => {
     }
   } catch (error) {
     console.error("Error during login:", error);
-    handleApiError(error, navigate);
     throw error;
   }
 };
