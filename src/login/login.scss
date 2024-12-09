@@ -1,0 +1,29 @@
+ol.custom-list {
+  list-style-type: none; /* Remove default numbering */
+  padding-left: 0; /* Remove left padding */
+  counter-reset: list-counter; /* Initialize custom counter */
+}
+
+ol.custom-list li {
+  counter-increment: list-counter; /* Increment the counter */
+  position: relative;
+  padding-left: 30px; /* Space for the custom number */
+  margin-bottom: 10px;
+}
+
+ol.custom-list li::before {
+  content: counter(list-counter); /* Display custom counter */
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 24px;
+  height: 24px;
+  background-color: #5a9d3d; /* Background color */
+  color: white; /* Text color */
+  font-weight: bold;
+  border-radius: 50%; /* Make it a circle */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
