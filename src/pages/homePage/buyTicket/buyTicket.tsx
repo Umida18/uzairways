@@ -105,8 +105,6 @@ export function BuyTicket() {
         bookingData
       );
       console.log("Booking created:", response);
-      // alert("Buyurtma muvaffaqiyatli yaratildi!");
-      // Navigate to success page or clear form
       notification.success({
         message: "Success",
         description: `Booking created successfully!`,

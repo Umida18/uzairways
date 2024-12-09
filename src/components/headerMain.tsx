@@ -98,7 +98,7 @@ const HeaderMain = () => {
         {isOpen && (
           <div className="mt-4 md:hidden">
             <Link
-              to="/flights"
+              to="/question"
               className="block py-2 text-white hover:text-primary"
             >
               Questions and answers
@@ -110,19 +110,19 @@ const HeaderMain = () => {
               About Us
             </Link>
             <Link
-              to="/admin"
+              to="/admin/users"
               className="block py-2 text-white hover:text-primary"
             >
               Admin Panel
             </Link>
             <Link
-              to="/super-admin"
+              to="/superAdmin/admins"
               className="block py-2 text-white hover:text-primary"
             >
               Super Admin
             </Link>
             <Link
-              to="/cabinet"
+              to="/dashboardPage"
               className="block py-2 text-white hover:text-primary"
             >
               Cabinet

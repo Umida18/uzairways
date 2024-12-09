@@ -1,6 +1,8 @@
 import api from "@/api/api";
+import { handleApiError } from "@/utils/apiErrorHandler";
 import { Card, Col, Row, Spin } from "antd";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface iCard {
   name: string;
@@ -12,6 +14,7 @@ const Tickets = () => {
   const [isHovered, setIsHovered] = useState<number | null>(null);
   const [cities, setCities] = useState<iCard[]>([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   const hoverCard = (index: number) => {
     setIsHovered(index);
@@ -29,6 +32,7 @@ const Tickets = () => {
         setCities(res.data);
       } catch (error) {
         console.error("Error fetching airports:", error);
+        handleApiError(error, navigate);
       } finally {
         setLoading(false);
       }
