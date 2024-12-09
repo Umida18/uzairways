@@ -1,32 +1,14 @@
-// import axios from "axios";
-// import { BASE_URL } from "../config";
-
-// const api = axios.create({
-//   baseURL: BASE_URL,
-//   timeout: 30000,
-// });
-
-// if (typeof window !== "undefined") {
-//   api.interceptors.request.use(
-//     (config) => {
-//       const accessToken = localStorage.getItem("token");
-//       if (accessToken) {
-//         config.headers["Authorization"] = `Bearer ${accessToken}`;
-//       }
-//       return config;
-//     },
-//     (error) => Promise.reject(error)
-//   );
-// }
-
-// export default api;
 import axios from "axios";
 import { BASE_URL } from "../config";
+import { handleApiError } from "@/utils/apiErrorHandler";
+import { useNavigate } from "react-router-dom";
 
 const api = axios.create({
   baseURL: BASE_URL,
   timeout: 30000,
 });
+
+const navigate = useNavigate();
 
 api.interceptors.request.use(
   (config) => {
@@ -63,6 +45,7 @@ api.interceptors.response.use(
           console.error("Refresh token xatosi:", refreshError);
           localStorage.removeItem("token");
           localStorage.removeItem("refreshToken");
+          handleApiError(refreshError, navigate);
         }
       }
     }
