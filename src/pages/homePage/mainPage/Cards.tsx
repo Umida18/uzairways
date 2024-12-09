@@ -40,25 +40,6 @@ const Tickets = () => {
     fetchData();
   }, []);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true);
-        const res = await api.get("/airport/get-all-airports");
-        setCities(res.data);
-      } catch (error) {
-        console.error("Error fetching airports:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchData();
-  }, []);
-
-  // const getColSpan = (index: number) => {
-  //   return index % 6 === 0 ? 12 : 6 && (index + 1) % 6 === 0 ? 12 : 6;
-  // };
-
   const getColSpan = (index: number) =>
     index % 6 === 0 ? 12 : (index + 1) % 6 === 0 ? 12 : 6;
 
