@@ -200,6 +200,7 @@ export default function MainLayout() {
                     ]}
                   >
                     <InputNumber
+                      min={1}
                       style={{
                         width: "100%",
                         height: "60px",

@@ -6,7 +6,7 @@ export const login = async (data: { username: string; password: string }) => {
     const response = await axios.post(`${BASE_URL}/auth/login`, data);
     console.log("Login response:", response);
 
-    const token = response.data?.token; // Tokenni qaytarish yo'lini tekshiring
+    const token = response.data?.token;
     const userId = response.data.userId;
     const userRole = response.data.userRole;
     if (token) {
@@ -23,6 +23,7 @@ export const login = async (data: { username: string; password: string }) => {
     throw error;
   }
 };
+
 export const register = async (data: {
   username: string;
   surname: string;

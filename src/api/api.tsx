@@ -48,14 +48,11 @@ api.interceptors.response.use(
   }
 );
 
-// Response interceptor to handle userId from the response
 if (typeof window !== "undefined") {
   api.interceptors.response.use(
     (response) => {
-      // Assuming the response contains `userId` in the data object
-      const { userId, token } = response.data; // Extract userId from response
+      const { userId, token } = response.data;
       if (userId) {
-        // Optionally, you can store the userId locally if needed
         localStorage.setItem("userId", userId);
         console.log("Token", token);
       }
